@@ -14,9 +14,10 @@ function adjustCurtain() {
   const leftCurtain = document.querySelector('.curtain-side:first-child');
   const rightCurtain = document.querySelector('.curtain-side:last-child');
   const curtainCenter = document.querySelector('.curtain-center');
+  const headerBar = document.querySelector('.header-bar');
 
-  if (!leftCurtain || !rightCurtain || !curtainCenter) {
-    console.log("Curtain elements not found — check selectors!");
+  if (!leftCurtain || !rightCurtain || !curtainCenter || !headerBar) {
+    console.log("Curtain or header-bar elements not found — check selectors!");
     return;
   }
 
@@ -39,4 +40,13 @@ function adjustCurtain() {
   console.log(`Adjusted tile width: ${adjustedTileWidth}`);
 
   curtainCenter.style.backgroundSize = `${adjustedTileWidth}px 100%`;
+
+  // Adjust header-bar width to be slightly wider than curtainCenter
+  let extraPadding = 160; // pixels wider than curtainCenter
+  if(centerWidth < 650) {extraPadding = extraPadding * 0.6}
+  const barWidth = Math.max(centerWidth + extraPadding);
+
+  headerBar.style.width = `${barWidth}px`;
+
+  console.log(`Header-bar width set to ${barWidth}px`);
 }
