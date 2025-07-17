@@ -25,7 +25,7 @@ function adjustCurtain() {
   const rightWidth = rightCurtain.offsetWidth;
   const centerWidth = totalWidth - leftWidth - rightWidth;
 
-  const tileOriginalWidth = 200;
+  const tileOriginalWidth = 300;
 
   // Determine how many tiles would approximately fit, rounded to nearest integer:
   const numTiles = Math.max(1, Math.round(centerWidth / tileOriginalWidth));
