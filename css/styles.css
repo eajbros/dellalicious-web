@@ -160,6 +160,7 @@ footer {
 }
 
 .menu-list {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr; /* default: one column */
   gap: 1rem;
@@ -228,9 +229,39 @@ footer {
   opacity: 0.8;
 }
 
-.bar-extension {
-  width: 100%;
-  height: 10px;
-  background-color: #5c4b3c;
-  position: relative;
+.vine-left, .vine-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 5vw;
+  background-image: url('../images/side-vine.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  pointer-events: none;
+}
+
+.vine-left {
+  left: -2.5vw;
+  transform: scaleX(-1);
+}
+
+.vine-right {
+  right: -2.5vw;
+}
+
+.vine-title-left,
+.vine-title-right {
+  height: clamp(100px, 8vw, 300px);
+  width: 15vw;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.vine-title-left {
+  transform: scaleX(-1) rotate(-45deg);
+}
+
+.vine-title-right {
+  transform: rotate(-45deg);
 }
