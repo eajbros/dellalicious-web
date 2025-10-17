@@ -26,18 +26,27 @@ function adjustCurtainTiles() {
     return;
   }
 
-  const totalWidth = window.innerWidth;
-  const leftWidth = leftCurtain.offsetWidth;
-  const rightWidth = rightCurtain.offsetWidth;
-  const centerWidth = totalWidth - leftWidth - rightWidth;
+  // Get the actual container width and let flex do its job first
+  const container = document.querySelector('.curtain-container');
+  const containerWidth = container.offsetWidth;
+  
+  // Wait for flex layout to complete, then get the actual center width
+  setTimeout(() => {
+    const actualCenterWidth = curtainCenter.offsetWidth;
+    
+    const tileOriginalWidth = 200; // Reduced from 300 to create more tiles
+    // Calculate how many complete tiles can fit in the actual center space
+    const numTiles = Math.max(1, Math.floor(actualCenterWidth / tileOriginalWidth));
+    // Calculate the actual width each tile should take to fill the space completely
+    const adjustedTileWidth = actualCenterWidth / numTiles;
 
-  const tileOriginalWidth = 300;
-  const numTiles = Math.max(1, Math.round(centerWidth / tileOriginalWidth));
-  const adjustedTileWidth = centerWidth / numTiles;
+    // Set the background size to ensure complete tiles
+    curtainCenter.style.backgroundSize = `${adjustedTileWidth}px 100%`;
+    
+    console.log(`Curtain tiles adjusted: containerWidth=${containerWidth}, actualCenterWidth=${actualCenterWidth}, numTiles=${numTiles}, tileWidth=${adjustedTileWidth}`);
+  }, 0);
 
-  curtainCenter.style.backgroundSize = `${adjustedTileWidth}px 100%`;
-
-  console.log(`Curtain tiles adjusted: centerWidth=${centerWidth}, numTiles=${numTiles}, tileWidth=${adjustedTileWidth}`);
+  console.log(`Curtain tiles adjusted: availableWidth=${availableCenterWidth}, numTiles=${numTiles}, tileWidth=${adjustedTileWidth}`);
 }
 
 function adjustHeaderBarWidth() {

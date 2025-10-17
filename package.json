@@ -1,0 +1,24 @@
+{
+  "name": "dellalicious-web",
+  "version": "1.0.0",
+  "description": "Dellalicious website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --port=3000 --open=/index.html",
+    "start": "live-server --port=3000 --open=/index.html",
+    "build": "echo 'No build process needed for static site'",
+    "preview": "live-server --port=4173 --open=/index.html"
+  },
+  "keywords": [
+    "website",
+    "static",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
