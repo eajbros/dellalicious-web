@@ -53,26 +53,23 @@ header {
 .header-bar {
   position: relative;
   background-color: #fadadd;
-  padding: 1rem clamp(2rem, 4vw, 6rem) 1rem clamp(3rem, 6vw, 8rem); 
-  border-radius: 0.5rem;
+  padding: 1rem clamp(2rem, 4vw, 6rem) 1rem 1rem;
+  border-radius: 0.5rem 0 0 0.5rem;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   display: flex;
   align-items: center;
   gap: 2rem;
   justify-content: space-between;
-  width: 100%;
+  width: calc(100vw - clamp(55px, 8vw, 130px));
+  margin-left: clamp(55px, 8vw, 130px);
   min-width: 280px;
-}
-
-.logo-circle {
+}.logo-circle {
   position: absolute;
-  left: clamp(-2rem, -4vw, -2.5rem); 
+  left: clamp(-30px, -3vw, -15px);
   top: 50%;
   transform: translateY(-50%);
   z-index: 3;
-}
-
-.logo-circle img {
+}.logo-circle img {
   width: clamp(80px, 12vw, 200px);
   height: clamp(80px, 12vw, 200px);
 }
@@ -80,17 +77,18 @@ header {
 .header-links {
   display: flex;
   flex: 1;
-  justify-content: space-between;
+  justify-content: space-evenly;
   gap: clamp(0.5rem, 2vw, 1rem);
+  margin-left: clamp(40px, 6vw, 110px);
+  margin-right: clamp(-28px, -4.3vw, -72px);
 }
 
 .header-bar a {
   text-decoration: none;
   color: #5c4b3c;
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-size: clamp(1.2rem, 3vw, 2rem);
   font-weight: bold;
   transition: color 0.2s ease;
-  flex: 1;
   text-align: center;
   white-space: nowrap;
 }
