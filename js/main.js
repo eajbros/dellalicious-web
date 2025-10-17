@@ -43,6 +43,37 @@ function adjustCurtainTiles() {
     // Set the background size to ensure complete tiles
     curtainCenter.style.backgroundSize = `${adjustedTileWidth}px 100%`;
     
+    // Set the header (off-white bar) height to 90% of the curtain container height
+    const header = document.querySelector('header');
+    if (header) {
+      const containerHeight = container.offsetHeight;
+      const headerHeight = containerHeight * 0.9;
+      header.style.height = `${headerHeight}px`;
+    }
+    
+    // Position the pink header-bar in the center between header bottom and curtain center bottom
+    const headerBar = document.querySelector('.header-bar');
+    if (header && headerBar) {
+      const headerBottom = header.offsetHeight;
+      const curtainCenterHeight = containerHeight * 0.29; // curtain-center is 29% of container
+      const curtainCenterBottom = containerHeight;
+      
+      // Calculate a position slightly higher than center between header bottom and curtain center bottom
+      const availableSpace = curtainCenterBottom - headerBottom;
+      const centerPosition = headerBottom + (availableSpace * 0.4); // 40% instead of 50% to sit higher
+      
+      // Position the header-bar at this center point
+      const headerBarHeight = headerBar.offsetHeight;
+      const topPosition = centerPosition - (headerBarHeight / 2);
+      
+      // Apply the positioning
+      headerBar.style.position = 'absolute';
+      headerBar.style.top = `${topPosition}px`;
+      headerBar.style.left = '50%';
+      headerBar.style.transform = 'translateX(-50%)';
+      headerBar.style.zIndex = '4'; // Above curtains
+    }
+    
     console.log(`Curtain tiles adjusted: containerWidth=${containerWidth}, actualCenterWidth=${actualCenterWidth}, numTiles=${numTiles}, tileWidth=${adjustedTileWidth}`);
   }, 0);
 

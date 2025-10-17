@@ -31,7 +31,7 @@ html {
 header {
   background-color: #fff8f0;
   width: 100%;
-  height: clamp(150px, 18vw, 400px);
+  /* Height will be set dynamically to 90% of curtain height */
   display: flex;
   align-items: center;
   justify-content: center;
